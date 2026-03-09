@@ -10,10 +10,6 @@ A simple web tool to send free likes to TikTok videos instantly. Built with a sp
 - 📱 **Responsive** — Works on mobile & desktop
 - 🌠 **Smooth Animations** — Floating astronaut, shooting stars, fade-in effects
 
-## 📸 Preview
-
-![Preview](https://via.placeholder.com/600x400?text=TikTok+Booster+Preview)
-
 ## 🛠️ Installation
 
 ### Deploy on Vercel (Recommended)
@@ -27,7 +23,7 @@ A simple web tool to send free likes to TikTok videos instantly. Built with a sp
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/tiktok-like.git
+git clone https://github.com/haikaldwiarya/tiktok-like.git
 
 # Go to the project folder
 cd tiktok-like
