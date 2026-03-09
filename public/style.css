@@ -1,0 +1,439 @@
+:root {
+    /* Sky / Space Palette */
+    --space-deep: #060d21;
+    --space-mid: #0b1a3e;
+    --nebula-blue: #00c8ff;
+    --nebula-purple: #7b2fff;
+    --star-white: #e8f0ff;
+    --card-glass: rgba(15, 25, 60, 0.55);
+    --card-border: rgba(0, 200, 255, 0.15);
+    --text-light: #FFFFFF;
+    --text-gray: #94a3c8;
+    --glow-blue: rgba(0, 200, 255, 0.35);
+    --glow-purple: rgba(123, 47, 255, 0.25);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* === Twinkling Stars Background === */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--space-deep);
+    background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(123, 47, 255, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 200, 255, 0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(0, 50, 120, 0.20) 0%, transparent 60%);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px 15px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Star layer */
+.stars-container {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+    opacity: 0;
+}
+
+.star.big {
+    width: 3px;
+    height: 3px;
+    box-shadow: 0 0 6px 1px rgba(200, 220, 255, 0.5);
+}
+
+@keyframes twinkle {
+    0%   { opacity: 0.1; transform: scale(0.8); }
+    50%  { opacity: 1;   transform: scale(1.2); }
+    100% { opacity: 0.3; transform: scale(1);   }
+}
+
+/* Shooting star */
+.shooting-star {
+    position: absolute;
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+    border-radius: 2px;
+    animation: shoot 6s linear infinite;
+    opacity: 0;
+}
+
+@keyframes shoot {
+    0%   { transform: translateX(0) translateY(0); opacity: 0; }
+    2%   { opacity: 1; }
+    8%   { transform: translateX(300px) translateY(200px); opacity: 0; }
+    100% { opacity: 0; }
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* === Glassmorphism Card === */
+.card {
+    background: var(--card-glass);
+    padding: 2rem;
+    border-radius: 24px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out both;
+}
+
+.main-card {
+    animation-delay: 0.1s;
+}
+
+.how-to-card {
+    animation-delay: 0.3s;
+    text-align: left;
+    padding: 1.5rem 2rem;
+}
+
+/* === Logo / Astronaut === */
+.logo-container {
+    margin-bottom: 1rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+.logo-container i,
+.logo-container .astronaut-icon {
+    font-size: 3.5rem;
+    background: linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 12px var(--glow-blue));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%      { transform: translateY(-10px); }
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
+}
+
+.highlight {
+    background: linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+/* === Form Elements === */
+.input-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+input[type="url"] {
+    width: 100%;
+    padding: 16px 16px 16px 48px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    font-size: 1rem;
+    background: rgba(10, 20, 50, 0.6);
+    color: var(--text-light);
+    outline: none;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+input[type="url"]::placeholder {
+    color: #4a5a7a;
+}
+
+input[type="url"]:focus {
+    border-color: var(--nebula-blue);
+    box-shadow: 0 0 20px rgba(0, 200, 255, 0.15), inset 0 0 10px rgba(0, 200, 255, 0.05);
+    background: rgba(10, 20, 50, 0.8);
+}
+
+input[type="url"]:focus + .input-icon,
+.input-group:focus-within .input-icon {
+    color: var(--nebula-blue);
+}
+
+/* === Submit Button === */
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple));
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 20px var(--glow-blue), 0 2px 8px var(--glow-purple);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 200%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px var(--glow-blue), 0 4px 15px var(--glow-purple);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(-1px);
+    filter: brightness(0.95);
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* === Features Grid === */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.feature-item {
+    transition: transform 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-4px);
+}
+
+.feature-item span {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+    color: var(--text-gray);
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.feature-item:hover span {
+    color: var(--nebula-blue);
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 200, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    color: var(--nebula-blue);
+    font-size: 1.2rem;
+    border: 1.5px solid rgba(0, 200, 255, 0.15);
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.feature-item:hover .icon-circle {
+    background: rgba(0, 200, 255, 0.15);
+    border-color: rgba(0, 200, 255, 0.35);
+    box-shadow: 0 0 15px rgba(0, 200, 255, 0.15);
+    transform: scale(1.05);
+}
+
+/* === How To Card === */
+.how-to-title {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light);
+}
+
+.how-to-title i {
+    color: var(--nebula-blue);
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease;
+}
+
+.step-item:hover {
+    transform: translateX(5px);
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(0, 200, 255, 0.2);
+}
+
+.step-item p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* === Footer === */
+footer {
+    text-align: center;
+    color: var(--text-gray);
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-top: auto;
+    padding-bottom: 1rem;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+footer:hover {
+    opacity: 0.8;
+}
+
+/* === Result Area & Loader === */
+.result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: rgba(10, 20, 50, 0.6);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    text-align: left;
+    animation: fadeInUp 0.4s ease-out both;
+}
+
+.result h3 {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.hidden { display: none; }
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: rotation 0.8s ease-in-out infinite;
+}
+
+@keyframes rotation {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* === Responsive / Mobile polish === */
+@media (max-width: 400px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+}

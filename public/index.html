@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TikTok Booster - Dapatkan Likes Gratis Secara Instan & Aman untuk video TikTok Anda.">
+    <title>TikTok Booster 🚀</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animated Star Background -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <div class="container">
+        
+        <div class="card main-card">
+            <div class="logo-container">
+                <i class="fa-solid fa-user-astronaut astronaut-icon"></i>
+            </div>
+            <h1 class="title">TikTok <span class="highlight">Booster</span></h1>
+            <p class="subtitle">Dapatkan Likes Gratis Secara Instan & Aman 🌌</p>
+
+            <form id="likeForm">
+                <div class="input-group">
+                    <i class="fa-solid fa-link input-icon"></i>
+                    <input type="url" id="url" placeholder="Tempel link video TikTok di sini..." required autocomplete="off">
+                </div>
+                
+                <button type="submit" id="submitBtn">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span class="btn-text">Kirim Likes Gratis</span>
+                    <div class="loader" id="loader"></div>
+                </button>
+            </form>
+
+            <div id="resultArea" class="result hidden">
+                <h3>Status</h3>
+                <pre id="output"></pre>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fa-solid fa-rocket"></i></div>
+                <span>SUPER CEPAT</span>
+            </div>
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fa-solid fa-satellite"></i></div>
+                <span>AMAN</span>
+            </div>
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fa-solid fa-star"></i></div>
+                <span>KUALITAS TINGGI</span>
+            </div>
+            <div class="feature-item">
+                <div class="icon-circle"><i class="fa-solid fa-meteor"></i></div>
+                <span>RESPONSIF</span>
+            </div>
+        </div>
+
+        <div class="card how-to-card">
+            <h2 class="how-to-title"><i class="fa-solid fa-book-open"></i> Cara Penggunaan</h2>
+            <div class="steps-list">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <p>Buka Aplikasi TikTok & Salin Link Video</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <p>Tempel Link di kotak di atas</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <p>Klik Tombol Kirim & Tunggu Prosesnya</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Xall Project</p>
+        </footer>
+    </div>
+
+    <script>
+        // Generate twinkling stars
+        (function() {
+            const container = document.getElementById('starsContainer');
+            const starCount = 120;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                if (Math.random() > 0.8) star.classList.add('big');
+
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.setProperty('--dur', (2 + Math.random() * 4).toFixed(1) + 's');
+                star.style.animationDelay = (Math.random() * 5).toFixed(1) + 's';
+
+                container.appendChild(star);
+            }
+
+            // Add a couple of shooting stars
+            for (let i = 0; i < 2; i++) {
+                const shoot = document.createElement('div');
+                shoot.classList.add('shooting-star');
+                shoot.style.top = (10 + Math.random() * 40) + '%';
+                shoot.style.left = (Math.random() * 30) + '%';
+                shoot.style.animationDelay = (i * 8 + Math.random() * 4).toFixed(1) + 's';
+                shoot.style.animationDuration = (5 + Math.random() * 4).toFixed(1) + 's';
+                container.appendChild(shoot);
+            }
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
